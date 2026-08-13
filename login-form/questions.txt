@@ -1,0 +1,16 @@
+If you write this code, an interviewer will likely push your knowledge
+further with these three senior-level questions. Here is how you answer them:
+
+Question A: "How can you pass the actual username to the dashboard page without a backend?"
+Your Answer: "Since this is a client-side architecture, I can append it to the URL query string
+during redirect, like window.location.href = 'dashboard.html?user=' + encodeURIComponent(username.value).
+On the dashboard page, I can retrieve it using the URLSearchParams API."
+
+Question B: "What happens if a user typed 'raunak' with a lowercase 'r'?"
+Your Answer: "Right now, the strict inequality operator (!==) checks case sensitivity, so it would fail.
+To make it more user-friendly, I could sanitize the input using .toLowerCase() and .trim() to strip out accidental whitespace before running the check."
+
+Question C: "If the dashboard page is just a static HTML file, can't someone just type dashboard.html into the URL bar and bypass the login form entirely?"
+Your Answer: "Yes, they can. Client-side routing is fundamentally insecure on its own.
+To fix this properly, the server needs to issue an HTTP-only cookie or JWT token upon a successful login.
+The dashboard page would then look for that token before rendering any sensitive data, redirecting the user back to the login page if it's missing."
